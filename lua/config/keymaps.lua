@@ -1,0 +1,26 @@
+local keymap = vim.keymap
+
+-- Select all
+keymap.set("n", "<leader>a", "gg<S-v>G")
+
+-- Disable continuations
+keymap.set("n", "<Leader>o", "o<Esc>^Da")
+keymap.set("n", "<Leader>O", "O<Esc>^Da")
+
+-- fomating and utils
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keymap.set("n", "J", "mzJ`z")
+
+keymap.set("n", "<C-d>", "<C-d>zz")
+keymap.set("n", "<C-u>", "<C-u>zz")
+keymap.set("n", "n", "nzzzv")
+keymap.set("n", "N", "Nzzzv")
+
+keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+keymap.set("n", "x", '"_x')
+
+vim.keymap.set("n", "Q", "<nop>")
+
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
