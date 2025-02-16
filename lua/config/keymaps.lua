@@ -20,7 +20,10 @@ keymap.set("n", "N", "Nzzzv")
 keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 keymap.set("n", "x", '"_x')
 
-vim.keymap.set("n", "Q", "<nop>")
+keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set("n", "<leader>f", vim.lsp.buf.format)
+keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+
+keymap.set("n", "<Leader>o", ":call append(line('.'), '')<CR>", { noremap = true, silent = true })
