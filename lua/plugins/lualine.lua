@@ -1,5 +1,4 @@
 return {
-
   {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
@@ -13,17 +12,17 @@ return {
       vim.o.laststatus = vim.g.lualine_laststatus
 
       local colors = {
-        bg = "#181825",
-        fg = "#cdd6f4",
-        yellow = "#f9e2af",
-        cyan = "#89dceb",
-        darkblue = "#1e66f5",
-        green = "#a6e3a1",
-        orange = "#fab387",
-        violet = "#cba6f7",
-        magenta = "#cba6f7",
-        blue = "#89b4fa",
-        red = "#f38ba8",
+        bg = "transparent",
+        fg = "#d3c6aa",
+        yellow = "#dbbc7f",
+        cyan = "#7fbbb3",
+        darkblue = "#3a566a",
+        green = "#a7c080",
+        orange = "#e69875",
+        violet = "#d699b6",
+        magenta = "#d699b6",
+        blue = "#7fbbb3",
+        red = "#e67e80",
       }
 
       local conditions = {
@@ -43,9 +42,6 @@ return {
       return {
         options = {
           theme = {
-            -- We are going to use lualine_c an lualine_x as left and
-            -- right section. Both are highlighted by c theme .  So we
-            -- are just setting default looks o statusline
             normal = { c = { fg = colors.fg, bg = colors.bg } },
             inactive = { c = { fg = colors.fg, bg = colors.bg } },
           },
@@ -55,27 +51,23 @@ return {
           section_separators = "",
         },
         sections = {
-          -- these are to remove the defaults
           lualine_a = {},
           lualine_b = {},
           lualine_y = {},
           lualine_z = {},
-          -- These will be filled later
           lualine_c = {
             {
               function()
                 return ""
               end,
-              color = { fg = colors.blue }, -- Sets highlighting of component
-              padding = { left = 0, right = 1 }, -- We don't need space before this
+              color = { fg = colors.blue },
+              padding = { left = 0, right = 1 },
             },
             {
-              -- mode component
               function()
                 return "󰅶"
               end,
               color = function()
-                -- auto change color according to neovims mode
                 local mode_color = {
                   n = colors.red,
                   i = colors.green,
@@ -103,7 +95,6 @@ return {
               padding = { right = 1 },
             },
             {
-              -- filesize component
               "filesize",
               cond = conditions.buffer_not_empty,
             },
@@ -112,12 +103,11 @@ return {
               cond = conditions.buffer_not_empty,
               color = { fg = colors.magenta, gui = "bold" },
             },
-
             { "location" },
             { "progress", color = { fg = colors.fg, gui = "bold" } },
             {
               "diagnostics",
-              souces = { "nvim_lsp" },
+              sources = { "nvim_lsp" },
               symbols = { error = " ", warn = " ", info = " " },
               diagnostics_color = {
                 color_error = { fg = colors.red },
@@ -155,7 +145,6 @@ return {
           },
         },
         inactive_sections = {
-          -- these are to remove the defaults
           lualine_a = {},
           lualine_b = {},
           lualine_y = {},

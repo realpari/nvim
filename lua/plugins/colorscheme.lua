@@ -1,10 +1,9 @@
 return {
-  "catppuccin/nvim",
+  "sainnhe/everforest",
   lazy = true,
-  name = "catppuccin",
+  name = "everforest",
   opts = {
-    transparent_background = true,
-    transparent = true,
+    background = "hard",
     integrations = {
       aerial = true,
       alpha = true,
