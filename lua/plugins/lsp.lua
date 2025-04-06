@@ -63,47 +63,29 @@ return {
       -- LSP Server Settings
       ---@type lspconfig.options
       servers = {
-        lua_ls = {
-          -- mason = false, -- set to false if you don't want this server to be installed with mason
-          -- Use this to add any additional keymaps
-          -- for specific lsp servers
-          -- ---@type LazyKeysSpec[]
-          -- keys = {},
+
+        gopls = {
+          mason = false,
           settings = {
-            Lua = {
-              workspace = {
-                checkThirdParty = false,
+            gopls = {
+              analyses = {
+                unusedparams = true,
+                shadow = true,
               },
-              codeLens = {
-                enable = true,
-              },
-              completion = {
-                callSnippet = "Replace",
-              },
-              doc = {
-                privateName = { "^_" },
-              },
-              hint = {
-                enable = true,
-                setType = false,
-                paramType = true,
-                paramName = "Disable",
-                semicolon = "Disable",
-                arrayIndex = "Disable",
-              },
+              staticcheck = true,
             },
           },
-        },
+        }
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
         -- example to setup with typescript.nvim
-         tsserver = function(_, opts)
-           require("typescript").setup({ server = opts })
-           return true
-         end,
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
         -- Specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
       },
@@ -162,14 +144,14 @@ return {
 
     if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
       opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
-        or function(diagnostic)
-          local icons = LazyVim.config.icons.diagnostics
-          for d, icon in pairs(icons) do
-            if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-              return icon
-            end
+      or function(diagnostic)
+        local icons = LazyVim.config.icons.diagnostics
+        for d, icon in pairs(icons) do
+          if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+            return icon
           end
         end
+      end
     end
 
     vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
