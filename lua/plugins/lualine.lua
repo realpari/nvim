@@ -152,7 +152,7 @@ return {
           lualine_c = {},
           lualine_x = {},
         },
-        extensions = { "neo-tree", "lazy" },
+        extensions = { "lazy" },
       }
     end,
   },
