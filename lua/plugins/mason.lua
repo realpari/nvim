@@ -8,6 +8,7 @@ return {
     ensure_installed = {
       "lua-language-server",
       "typescript-language-server",
+      "tailwindcss-language-server",
       "stylua",
       "shfmt",
       "flake8",
