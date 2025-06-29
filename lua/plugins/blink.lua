@@ -1,5 +1,6 @@
 return {
   "saghen/blink.cmp",
+  commit = "cb5e346d9e0efa7a3eee7fd4da0b690c48d2a98e",
   opts = {
     sources = {
       default = { "lazydev" },
